@@ -1,0 +1,63 @@
+create table tbCurso(
+sigla_curso varchar(2) not null,
+nome_curso varchar2(40) not null,
+carga_horaria int not null,
+valor_curso number(4,2) not null,
+prog_curso varchar2(30),
+data_vig_curso date,
+valor_hora_inst number(3,2),
+constraint pk_sigla_curso primary key (sigla_curso)
+);
+
+create table tbTurma(
+sigla_turma varchar(2) not null,
+sigla_curso varchar(2) not null,
+nome_t varchar2(40) not null,
+qnt_vagas int,
+dt_inicio date,
+periodo varchar2(30),
+dt_term date,
+constraint pk_sigla_turma primary key (sigla_turma),
+constraint fk_sigla_curso foreign key (sigla_curso) references tbCurso(sigla_curso)
+);
+
+create table tbInstrutor(
+cpf number(11,0) not null,
+nome_inst varchar(40) not null,
+dt_nasc date not null,
+sexo varchar(8) not null,
+civil varchar(12),
+endereco varchar2(50) not null,
+num varchar2(4) not null,
+cep varchar2(8),
+bairro varchar2(20),
+tel_res varchar2(10),
+tel_cel varchar(11),
+cidade varchar(20),
+uf varchar(2),
+rg varchar2(13) not null,
+area_atuacao varchar2(30),
+formacao varchar2(30),
+email varchar2(35) not null,
+constraint pk_cpf primary key (cpf)
+);
+
+create table tbAluno(
+cpf number(11,0) not null,
+nome_inst varchar(40) not null,
+dt_nasc date not null,
+sexo varchar(8) not null,
+civil varchar(12),
+escolaridade varchar(25),
+endereco varchar2(50) not null,
+num varchar2(4),
+cep varchar2(8),
+cidade varchar(20),
+uf varchar(2),
+bairro varchar2(20),
+tel_res varchar2(10),
+tel_cel varchar(11),
+rg varchar2(13) not null,
+email varchar2(35) not null,
+constraint pk_cpfaluno primary key (cpf)
+);
